@@ -1,1 +1,1 @@
-# RISCV_Project_IIITB
+# RISCV_Digital_Stopwatch_Timer
