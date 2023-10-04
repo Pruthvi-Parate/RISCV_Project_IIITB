@@ -70,7 +70,7 @@ int main(){
 		:"r"(dummy));
 		
 		
-		if(distance <= 100 && distance >= 0){
+		if(distance <= 1 && distance >= 0){
 			buzzer = 1;
 			dummy=0xFFFFFFF4;
 			asm(
@@ -112,7 +112,6 @@ int main(){
 
 # Assembly Code
 ```
-
 
 
 project.o:     file format elf32-littleriscv
@@ -251,29 +250,32 @@ Disassembly of section .text:
  1c4:	e61ff06f          	j	24 <.L10>
 
 
+
+
 ```
 # Unique Instructions
 ```
 Number of different instructions: 18
 List of unique instructions:
-bgtz
-mul
-or
-jalr
-lw
-sw
-bgeu
-mv
-bne
 and
 andi
-li
-addi
+mul
+bgeu
 divu
-j
-lui
 auipc
 bltz
+li
+j
+addi
+mv
+jalr
+lui
+or
+sw
+bgtz
+bne
+lw
+
 
 
 ```
