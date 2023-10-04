@@ -1,4 +1,5 @@
 # RISCV_Social_Distance_Detection
+![image](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/bfc1cd72-51fa-48c9-bab9-b71fea6f1ddb)
 
 # Aim
 The aim of this project is to design and create a versatile social distance detection system controlled by a RISC-V. This system will be helpful to measure social distance. User will be alarmed when distance will be less than 100cm and greater than 0. 
@@ -277,5 +278,8 @@ bne
 lw
 
 
-
 ```
+### References
+ 
+ 1. https://github.com/SakethGajawada/RISCV_GNU
+ 2. https://github.com/SarthakSKumar/IoT-Projects-and-Scripts/tree/master/Arduino%20Projects/Social%20Distance%20Detector
