@@ -259,3 +259,30 @@ Disassembly of section .text:
  1ec:	e39ff06f          	j	24 <.L10>
 
 ```
+# Unique Instructions
+```
+Number of different instructions: 21
+List of unique instructions:
+j
+sd
+sw
+lui
+lw
+sext.w
+bne
+ld
+divuw
+auipc
+li
+mv
+or
+and
+addiw
+bltz
+addi
+bgeu
+bgtz
+andi
+jalr
+
+```
