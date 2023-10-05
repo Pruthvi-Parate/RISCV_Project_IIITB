@@ -115,18 +115,19 @@ int main(){
 ```
 
 
+
 project.o:     file format elf32-littleriscv
 
 
 Disassembly of section .text:
 
 00000000 <main>:
-   0:	fc010113          	addi	sp,sp,-64
+   0:	fc010113          	add	sp,sp,-64
    4:	02112e23          	sw	ra,60(sp)
    8:	02812c23          	sw	s0,56(sp)
-   c:	04010413          	addi	s0,sp,64
+   c:	04010413          	add	s0,sp,64
   10:	009897b7          	lui	a5,0x989
-  14:	68078793          	addi	a5,a5,1664 # 989680 <.L9+0x9894bc>
+  14:	68078793          	add	a5,a5,1664 # 989680 <.L9+0x9894bc>
   18:	fef42023          	sw	a5,-32(s0)
   1c:	ffe00793          	li	a5,-2
   20:	fef42423          	sw	a5,-24(s0)
@@ -143,13 +144,13 @@ Disassembly of section .text:
 
 00000044 <.L3>:
   44:	fe442783          	lw	a5,-28(s0)
-  48:	00178793          	addi	a5,a5,1
+  48:	00178793          	add	a5,a5,1
   4c:	fef42223          	sw	a5,-28(s0)
 
 00000050 <.L2>:
   50:	fe442703          	lw	a4,-28(s0)
   54:	009897b7          	lui	a5,0x989
-  58:	67f78793          	addi	a5,a5,1663 # 98967f <.L9+0x9894bb>
+  58:	67f78793          	add	a5,a5,1663 # 98967f <.L9+0x9894bb>
   5c:	fee7f4e3          	bgeu	a5,a4,44 <.L3>
   60:	fc042e23          	sw	zero,-36(s0)
   64:	fe842783          	lw	a5,-24(s0)
@@ -158,16 +159,16 @@ Disassembly of section .text:
   70:	fcf42e23          	sw	a5,-36(s0)
   74:	fe042223          	sw	zero,-28(s0)
   78:	000f0513          	mv	a0,t5
-  7c:	00257793          	andi	a5,a0,2
+  7c:	00257793          	and	a5,a0,2
   80:	fef42623          	sw	a5,-20(s0)
   84:	01c0006f          	j	a0 <.L4>
 
 00000088 <.L5>:
   88:	fe442783          	lw	a5,-28(s0)
-  8c:	00178793          	addi	a5,a5,1
+  8c:	00178793          	add	a5,a5,1
   90:	fef42223          	sw	a5,-28(s0)
   94:	000f0513          	mv	a0,t5
-  98:	00257793          	andi	a5,a0,2
+  98:	00257793          	and	a5,a0,2
   9c:	fef42623          	sw	a5,-20(s0)
 
 000000a0 <.L4>:
@@ -251,32 +252,28 @@ Disassembly of section .text:
  1c4:	e61ff06f          	j	24 <.L10>
 
 
-
-
 ```
 # Unique Instructions
 ```
-Number of different instructions: 18
+Number of different instructions: 17
 List of unique instructions:
 and
-andi
-mul
+sw
 bgeu
-divu
-auipc
+add
 bltz
+mv
+auipc
+bgtz
 li
 j
-addi
-mv
-jalr
-lui
-or
-sw
-bgtz
 bne
+mul
+or
+divu
+jalr
 lw
-
+lui
 
 ```
 ### References
