@@ -18,7 +18,8 @@ In this project using RISC-V which is connected to one ultrasonic sensor, one bu
 
     Below shown the representation of social distance detection logic.
 
-![Untitled](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/98e02c71-8c38-4889-9401-d65e6e3d74f6)
+![Untitled (1)](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/31ec34f9-c06f-4393-847f-ff6b24f52ed7)
+
 
 
 
