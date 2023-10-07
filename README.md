@@ -38,86 +38,108 @@ int main(){
 	while(1)
 	{
 		trig = 1;
-		asm(
+		asm volatile(
 		"and x30, x30, %1\n\t"
-    	"or x30, x30, %0\n\t"
-    	:"=r"(trig)
-		:"r"(dummy));
+    		"or x30, x30, %0\n\t"
+    		:
+		:"r"(trig),"r"(dummy)
+		:"x30"
+		);
 		for(i=0;i<10000000;i++);
 			
-		trig = 0;
-		asm(
-		"and x30, x30, %1\n\t"
-    	"or x30, x30, %0\n\t"
-    	:"=r"(trig)
-		:"r"(dummy));
-		i=0;
-		
-		asm(
-		"addi x10, x30, 0\n\t"
-		"and %0, x10, 2\n\t"
-			:"=r"(echo));         
+			trig = 0;
+			asm volatile(
+			"and x30, x30, %1\n\t"
+			"or x30, x30, %0\n\t"
+			:
+			:"r"(trig),"r"(dummy)
+			:"x30"
+			);
+			i=0;
+			
+			asm volatile(
+			"addi x10, x30, 0\n\t"
+			"and %0, x10, 2\n\t"
+			:"=r"(echo)
+			:
+			:"x10"
+			);         
 			
 		while(echo!= 1){
 			i++;
-			asm(
+			asm volatile(
 			"addi x10, x30, 0\n\t"
 			"and %0, x10, 2\n\t"
-				:"=r"(echo));
+			:"=r"(echo)
+			:
+			:"x10"
+			);
 		}
 		duration = i/clk_freq;
 		distance = duration*172;
 		
 		buzzer = 0;
 		dummy=0xFFFFFFF4;
-		asm(
+		asm volatile(
 		"and x30, x30, %1\n\t"
-    	"or x30, x30, %0\n\t"
-    	:"=r"(buzzer)
-		:"r"(dummy));
+    		"or x30, x30, %0\n\t"
+    		:
+		:"r"(buzzer),"r"(dummy)
+		:"x30"
+		);
 		
 		led = 0;
 		dummy=0xFFFFFFF8;
-		asm(
+		asm volatile(
 		"and x30, x30, %1\n\t"
-    	"or x30, x30, %0\n\t"
-    	:"=r"(led)
-		:"r"(dummy));
+    		"or x30, x30, %0\n\t"
+    		:
+		:"r"(led),"r"(dummy)
+		:"x30"
+		);
 		
 		
 		if(distance <= 1 && distance >= 0){
 			buzzer = 1;
 			dummy=0xFFFFFFF4;
-			asm(
+			asm volatile(
 			"and x30, x30, %1\n\t"
 			"or x30, x30, %0\n\t"
-			:"=r"(buzzer)
-			:"r"(dummy));
+			:
+			:"r"(buzzer),"r"(dummy)
+			:"x30"
+			);
 			
 			led = 1;
 			dummy=0xFFFFFFF8;
-			asm(
+			asm volatile(
 			"and x30, x30, %1\n\t"
 			"or x30, x30, %0\n\t"
-			:"=r"(led)
-			:"r"(dummy));
+			:
+			:"r"(led),"r"(dummy)
+			:"x30"
+			);
 		}
 		else{
 			buzzer = 0;
 			dummy=0xFFFFFFF4;
-			asm(
+			asm volatile(
 			"and x30, x30, %1\n\t"
 			"or x30, x30, %0\n\t"
-			:"=r"(buzzer)
-			:"r"(dummy));
+			:
+			:"r"(buzzer),"r"(dummy)
+			:"x30"
+			);
 			
 			led = 0;
 			dummy=0xFFFFFFF8;
-			asm(
+			asm volatile(
 			"and x30, x30, %1\n\t"
 			"or x30, x30, %0\n\t"
-			:"=r"(led)
-			:"r"(dummy));
+			:
+			:"r"(led),"r"(dummy)
+			:"x30"
+			);
 		}
 	}
 	return 0;
@@ -128,9 +150,7 @@ int main(){
 # Assembly Code
 ```
 
-
-
-project.o:     file format elf32-littleriscv
+output.o:     file format elf32-littleriscv
 
 
 Disassembly of section .text:
@@ -149,10 +169,10 @@ Disassembly of section .text:
 00000024 <.L10>:
   24:	00100793          	li	a5,1
   28:	fcf42e23          	sw	a5,-36(s0)
-  2c:	fe842783          	lw	a5,-24(s0)
-  30:	00ff7f33          	and	t5,t5,a5
-  34:	00ff6f33          	or	t5,t5,a5
-  38:	fcf42e23          	sw	a5,-36(s0)
+  2c:	fdc42783          	lw	a5,-36(s0)
+  30:	fe842703          	lw	a4,-24(s0)
+  34:	00ef7f33          	and	t5,t5,a4
+  38:	00ff6f33          	or	t5,t5,a5
   3c:	fe042223          	sw	zero,-28(s0)
   40:	0100006f          	j	50 <.L2>
 
@@ -167,10 +187,10 @@ Disassembly of section .text:
   58:	67f78793          	add	a5,a5,1663 # 98967f <.L9+0x9894bb>
   5c:	fee7f4e3          	bgeu	a5,a4,44 <.L3>
   60:	fc042e23          	sw	zero,-36(s0)
-  64:	fe842783          	lw	a5,-24(s0)
-  68:	00ff7f33          	and	t5,t5,a5
-  6c:	00ff6f33          	or	t5,t5,a5
-  70:	fcf42e23          	sw	a5,-36(s0)
+  64:	fdc42783          	lw	a5,-36(s0)
+  68:	fe842703          	lw	a4,-24(s0)
+  6c:	00ef7f33          	and	t5,t5,a4
+  70:	00ff6f33          	or	t5,t5,a5
   74:	fe042223          	sw	zero,-28(s0)
   78:	000f0513          	mv	a0,t5
   7c:	00257793          	and	a5,a0,2
@@ -204,17 +224,17 @@ Disassembly of section .text:
   dc:	fc042823          	sw	zero,-48(s0)
   e0:	ff400793          	li	a5,-12
   e4:	fef42423          	sw	a5,-24(s0)
-  e8:	fe842783          	lw	a5,-24(s0)
-  ec:	00ff7f33          	and	t5,t5,a5
-  f0:	00ff6f33          	or	t5,t5,a5
-  f4:	fcf42823          	sw	a5,-48(s0)
+  e8:	fd042783          	lw	a5,-48(s0)
+  ec:	fe842703          	lw	a4,-24(s0)
+  f0:	00ef7f33          	and	t5,t5,a4
+  f4:	00ff6f33          	or	t5,t5,a5
   f8:	fc042623          	sw	zero,-52(s0)
   fc:	ff800793          	li	a5,-8
  100:	fef42423          	sw	a5,-24(s0)
- 104:	fe842783          	lw	a5,-24(s0)
- 108:	00ff7f33          	and	t5,t5,a5
- 10c:	00ff6f33          	or	t5,t5,a5
- 110:	fcf42623          	sw	a5,-52(s0)
+ 104:	fcc42783          	lw	a5,-52(s0)
+ 108:	fe842703          	lw	a4,-24(s0)
+ 10c:	00ef7f33          	and	t5,t5,a4
+ 110:	00ff6f33          	or	t5,t5,a5
  114:	000007b7          	lui	a5,0x0
  118:	0007a583          	lw	a1,0(a5) # 0 <main>
  11c:	fd442503          	lw	a0,-44(s0)
@@ -232,62 +252,61 @@ Disassembly of section .text:
  14c:	fcf42823          	sw	a5,-48(s0)
  150:	ff400793          	li	a5,-12
  154:	fef42423          	sw	a5,-24(s0)
- 158:	fe842783          	lw	a5,-24(s0)
- 15c:	00ff7f33          	and	t5,t5,a5
- 160:	00ff6f33          	or	t5,t5,a5
- 164:	fcf42823          	sw	a5,-48(s0)
+ 158:	fd042783          	lw	a5,-48(s0)
+ 15c:	fe842703          	lw	a4,-24(s0)
+ 160:	00ef7f33          	and	t5,t5,a4
+ 164:	00ff6f33          	or	t5,t5,a5
  168:	00100793          	li	a5,1
  16c:	fcf42623          	sw	a5,-52(s0)
  170:	ff800793          	li	a5,-8
  174:	fef42423          	sw	a5,-24(s0)
- 178:	fe842783          	lw	a5,-24(s0)
- 17c:	00ff7f33          	and	t5,t5,a5
- 180:	00ff6f33          	or	t5,t5,a5
- 184:	fcf42623          	sw	a5,-52(s0)
+ 178:	fcc42783          	lw	a5,-52(s0)
+ 17c:	fe842703          	lw	a4,-24(s0)
+ 180:	00ef7f33          	and	t5,t5,a4
+ 184:	00ff6f33          	or	t5,t5,a5
  188:	03c0006f          	j	1c4 <.L9>
 
 0000018c <.L6>:
  18c:	fc042823          	sw	zero,-48(s0)
  190:	ff400793          	li	a5,-12
  194:	fef42423          	sw	a5,-24(s0)
- 198:	fe842783          	lw	a5,-24(s0)
- 19c:	00ff7f33          	and	t5,t5,a5
- 1a0:	00ff6f33          	or	t5,t5,a5
- 1a4:	fcf42823          	sw	a5,-48(s0)
+ 198:	fd042783          	lw	a5,-48(s0)
+ 19c:	fe842703          	lw	a4,-24(s0)
+ 1a0:	00ef7f33          	and	t5,t5,a4
+ 1a4:	00ff6f33          	or	t5,t5,a5
  1a8:	fc042623          	sw	zero,-52(s0)
  1ac:	ff800793          	li	a5,-8
  1b0:	fef42423          	sw	a5,-24(s0)
- 1b4:	fe842783          	lw	a5,-24(s0)
- 1b8:	00ff7f33          	and	t5,t5,a5
- 1bc:	00ff6f33          	or	t5,t5,a5
- 1c0:	fcf42623          	sw	a5,-52(s0)
+ 1b4:	fcc42783          	lw	a5,-52(s0)
+ 1b8:	fe842703          	lw	a4,-24(s0)
+ 1bc:	00ef7f33          	and	t5,t5,a4
+ 1c0:	00ff6f33          	or	t5,t5,a5
 
 000001c4 <.L9>:
  1c4:	e61ff06f          	j	24 <.L10>
-
 
 ```
 # Unique Instructions
 ```
 Number of different instructions: 17
 List of unique instructions:
-and
-sw
-bgeu
-add
 bltz
-mv
-auipc
-bgtz
-li
-j
-bne
+lw
 mul
-or
+and
 divu
 jalr
-lw
+bgtz
+auipc
+bgeu
+li
+sw
+mv
+j
+add
+bne
 lui
+or
 
 ```
 ### References
