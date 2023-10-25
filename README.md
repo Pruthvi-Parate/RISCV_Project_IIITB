@@ -414,7 +414,10 @@ sub
 
 ![image](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/ece0df0d-a023-4ec0-9201-070af80693e4)
 
+# Explaination
 
+Here what's happening is first trigger is made 1 for some time (using for loop) and then turned off the trigger pin and when echo pin receives the waves "echo pin is triggered" 
+and thus buzzer and led will be turn , which is 12 = 1100 so two msb are led and buzzer which is turned on in above case.
 
 ### References
  
