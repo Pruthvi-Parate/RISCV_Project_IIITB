@@ -416,6 +416,14 @@ sub
 
 ![spike-result](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/b9979d17-5820-4d3e-9ad9-27453212180d)
 
+# Functional Simualation
+
+By performing functional simulation we can verify our design through the verilog code which is processor.v and testbench.v. Here one trigger pin is there , input_wire is the echo pin and
+output_wires is led and buzzer. So as shown in the gtkwave diagram when trigger is made zero and echo pin(input_wire) is 1 , buzzer and led (output_wires) is 11. There is also shown the 
+clk, write_done and ID_instruction in the gtkwave diagram below.
+
+![11](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/efc3d21a-7553-403b-824c-fba6b38e28ef)
+
 
 # Explaination
 
