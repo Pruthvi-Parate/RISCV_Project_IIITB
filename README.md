@@ -430,6 +430,9 @@ clk, write_done and ID_instruction in the gtkwave diagram below.
 
 ![12](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/c6c51864-1779-4b22-a942-5308133b38eb)
 
+Here below input wire is 0 which is echo pin so outputs (buzzer and led) are also 00. Here clk , ID_instruction  and write_done also shown.
+
+![13](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/9c3e977a-a9c1-4370-9e0a-a4272a8fb497)
 
 
 
