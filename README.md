@@ -434,7 +434,12 @@ Here below input wire is 0 which is echo pin so outputs (buzzer and led) are als
 
 ![13](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/9c3e977a-a9c1-4370-9e0a-a4272a8fb497)
 
+# Instruction Verification
+Here as shown below at instruction : 00FF6F33 output is shown where input pin is 1 and output pins (buzzer, led) is 11:
+![14](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/594afba1-76d7-4413-a04f-9e8f29b0abd5)
 
+And as shown below at instruction : FE442783 trig pin is 1 and input pin (echo pin) is 0 thus output pins(buzzer,led) is 00:
+![15](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/46bd1c14-a97c-40d9-8f4c-453d764083bf)
 
 ### References
  
