@@ -441,6 +441,12 @@ Here as shown below at instruction : 00FF6F33 output is shown where input pin is
 And as shown below at instruction : FE442783 trig pin is 1 and input pin (echo pin) is 0 thus output pins(buzzer,led) is 00:
 ![15](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/46bd1c14-a97c-40d9-8f4c-453d764083bf)
 
+# GLS
+As you can see in below image sky130_sram cell is implemented in gate level simulation:  
+
+![16](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/9e14022a-edc3-41d8-a989-dcd42f95e4a2)
+
+
 ### References
  
  1. https://github.com/SakethGajawada/RISCV_GNU
