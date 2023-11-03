@@ -442,6 +442,9 @@ show wrapper
 
 ![17](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/3f53771a-fa5a-491f-a47a-cd68121042e3)
 
+## Word of thanks
+I sciencerly thank Mr. Kunal Gosh(Founder/VSD) and Mayank Kabra for helping me out to complete this flow smoothly.
+
 ### References
  
  1. https://github.com/SakethGajawada/RISCV_GNU
