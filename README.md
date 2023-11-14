@@ -442,8 +442,65 @@ show wrapper
 
 ![17](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/3f53771a-fa5a-491f-a47a-cd68121042e3)
 
+# Openlane
+
+Below are the commands to run openlane:  
+
+```
+make mount
+%./flow.tcl -interactive
+% package require openlane 0.9
+% prep -design project
+```
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/fed50d51-1555-46fc-9e3a-560f0de2abf5)
+
+## Synthesis  
+
+Logic synthesis is a crucial step in the design of digital integrated circuits (ICs) and plays a central role in transforming a high-level hardware description into a gate-level representation that can be fabricated in silicon.  
+
+
+To run synthesis in openlane give below command:  
+
+```
+run_synthesis
+```
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/8daaee43-37db-4b6e-9743-46779356abeb)
+
+Below is the chip area after synthesis:  
+
+![synth_area](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/32089305-1202-4aba-86c4-1144a39878d0)
+
+## Floorplan  
+
+Floorplan is one the critical & important step in Physical design. Quality of your Chip / Design implementation depends on how good is the Floorplan. A good floorplan can be make implementation process (place, cts, route & timing closure) cake walk. On similar lines a bad floorplan can create all kind issues in the design (congestion, timing, noise, IR, routing issues). A bad floorplan will blow up the area, power & affects reliability, life of the IC and also it can increase overall IC cost (more effort to closure, more LVTS/ULVTS).  
+
+To run floorplan give below command:  
+
+```
+run_floorplan
+```
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/4b48491d-1570-4f3b-9d7d-28dd33b40671)
+
+To see the floorplan in magic go to the run/results/floorplan/ and give below command:  
+
+```
+magic -T /home/pruthvi/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+
+```
+
+![floorplan_magic](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/95e1fa29-c90b-424d-a66b-2beddfadcf46)
+
+Below are the core area and die area:  
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/2ec5cce7-d1bf-4c25-97e1-53f22e38eb10)
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/416b5e44-3714-4ea0-a95b-4c2ee7ca1c7f)
+
 ## Word of thanks
-I sciencerly thank Mr. Kunal Gosh(Founder/VSD) and Mayank Kabra for helping me out to complete this flow smoothly.
+I sciencerly thank Mr. Kunal Gosh(Founder/VSD) and Mayank Kabra (Founder /Chipcron) for helping me out to complete this flow smoothly.
 
 ### References
  
