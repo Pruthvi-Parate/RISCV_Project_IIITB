@@ -455,6 +455,11 @@ make mount
 
 ![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/fed50d51-1555-46fc-9e3a-560f0de2abf5)
 
+### Config.json file
+
+![config](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/e3192cf4-14c2-4565-9dcb-92f93911d44e)
+
+
 ## Synthesis  
 
 Logic synthesis is a crucial step in the design of digital integrated circuits (ICs) and plays a central role in transforming a high-level hardware description into a gate-level representation that can be fabricated in silicon.  
@@ -498,6 +503,86 @@ Below are the core area and die area:
 ![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/2ec5cce7-d1bf-4c25-97e1-53f22e38eb10)
 
 ![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/416b5e44-3714-4ea0-a95b-4c2ee7ca1c7f)
+
+## Placement  
+
+Placement is the process of determining the locations of circuit devices on a die surface. It is an important stage in the VLSI design flow, because it affects routabil- ity, performance, heat distribution, and to a less extent, power consumption of a design.  
+
+To run the placement :  
+
+```
+run_placement
+```
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/79e94dda-293a-44ed-961d-c0a362fbb00f)
+
+
+To see the placement in magic go to the /results/placement/ folder and run this command:  
+
+```
+magic -T /home/pruthvi/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+
+```
+
+## Clock Tree Synthesis(CTS)  
+
+Clock Tree Synthesis is a technique for distributing the clock equally among all sequential parts of a VLSI design. The purpose of Clock Tree Synthesis is to reduce skew and delay.  
+
+Run the following command to run the cts in openlane:  
+
+```
+run_cts
+```
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/282dc626-5236-44fd-bef2-9442d1f68229)
+
+Below is the timing reports after cts which contains : Setup and Hold slack, Design Area:  
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/f63e3c66-d6b7-416f-99f7-3dd66a8a280f)
+
+Below is the Power report:  
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/aeeac9df-12e8-45fa-9206-19d06e96a327)
+
+## Routing 
+
+Routing in VLSI is making physical connections between signal pins using metal layers. Following Clock Tree Synthesis (CTS) and optimization, the routing step determines the exact pathways for interconnecting standard cells, macros, and I/O pins.  
+
+To run routing use below command:  
+
+```
+run_routing
+```
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/7b157f83-267b-4e5b-83c0-d6361493878a)
+
+To view routing in magic go to the /results/routing/ folder and run below command:  
+
+```
+magic -T /home/pruthvi/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read wrapper.def &
+```
+
+![routing_magic](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/da0a8be4-8d7d-447d-bddb-d827cd7e2b2e)
+
+![routing_det_magic](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/af7dcd03-829a-4fa8-9dd3-89339af6f15d)
+
+### Timing reports after routing :  
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/c76d81ce-c392-43d3-9556-7ee1edf0fda4)
+
+### Power 
+
+![routing_power](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/9b266830-7926-4a28-a7cb-10dfcc2e4aaa)
+
+### DRC  
+
+Below shown that drc violations are Zero  
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/fdb7d0c5-3815-4b72-9cd9-8980bb3664de)
+
+Below are the other things we can check and verify:  
+
+![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/a9e7aa7c-049d-493c-8fa5-07e905e8cf30)
+
 
 ## Word of thanks
 I sciencerly thank Mr. Kunal Gosh(Founder/VSD) and Mayank Kabra (Founder /Chipcron) for helping me out to complete this flow smoothly.
