@@ -421,6 +421,26 @@ And as shown below at instruction : FE442783 trig pin is 1 and input pin (echo p
 ![15](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/46bd1c14-a97c-40d9-8f4c-453d764083bf)
 
 # GLS
+
+Below are the commands for GLS using yosys:  
+
+```
+read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80_256.lib 
+read_verilog processor.v 
+synth -top wrapper
+dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80_256.lib 
+abc -liberty sky130_fd_sc_hd__tt_025C_1v80_256.lib
+write_verilog synth_processor_test.v
+```
+
+Now run below command to view waveform of GLS:  
+
+```
+iverilog -o test synth_processor_test.v testbench.v sky130_sram_1kbyte_1rw1r_32x256_8.v sky130_fd_sc_hd.v primitives.v
+
+```
+
+
 As you can see in below image sky130_sram cell is implemented in gate level simulation:  
 
 ![18](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/99570de9-d182-4283-8e15-fe644b2c6090)   
