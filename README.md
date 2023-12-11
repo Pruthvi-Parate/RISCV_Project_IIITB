@@ -603,6 +603,18 @@ Below are the other things we can check and verify:
 
 ![](https://github.com/Pruthvi-Parate/RISCV_Project_IIITB/assets/72121158/a9e7aa7c-049d-493c-8fa5-07e905e8cf30)
 
+## Performance Calculation
+Clock period = 23ns and setup slack is 3.53ns(after routing)  
+
+```
+                              1
+Max Performance =  ------------------------
+                     clock period - slack(setup)
+```
+
+Max Performance = 51MHz
+
+
 ### Runs folder
 
 Below is the link for runs folder that contains all the files:  
